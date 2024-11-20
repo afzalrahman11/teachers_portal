@@ -1,0 +1,25 @@
+<div class="new-student">
+  <h1>Add New Student</h1>
+
+  <%= form_with model: @student, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :subject %>
+      <%= f.text_field :subject, required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :marks %>
+      <%= f.number_field :marks, required: true %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "Add Student", class: "btn btn-primary" %>
+      <%= link_to "Back", authenticated_root_path, class: "btn btn-home" %>
+    </div>
+  <% end %>
+</div>

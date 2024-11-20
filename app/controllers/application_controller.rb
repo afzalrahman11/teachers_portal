@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
     # else
     #   teacher_dashboard_path
     # end
-    students_index_path
+    students_path
   end
 end

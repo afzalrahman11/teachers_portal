@@ -6,19 +6,32 @@
   <%= csp_meta_tag %>
 
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload" %> <!-- Ensure JavaScript is loaded -->
+
   <% if devise_controller? %>
     <%= stylesheet_link_tag 'devise', media: 'all', 'data-turbo-track': 'reload' %>
   <% end %>
+    <%= javascript_importmap_tags %>
 </head>
 
-  <body>
-    <% flash.each do |key, message| %>
-      <div class="flash <%= key %>"><%= message %></div>
-    <% end %>
+<body>
+  <% flash.each do |key, message| %>
+    <div class="flash <%= key %>" data-controller="flash" data-flash-key="<%= key %>">
+      <%= message %>
+    </div>
+  <% end %>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    
-    <%= yield %>
-  </body>
+  <header>
+    <nav>
+      <ul class="nav-list">
+        <li><%= link_to "Home", authenticated_root_path, class: "btn btn-home" %></li>
+        <% if teacher_signed_in? %>
+          <li><%= link_to "Sign Out", destroy_teacher_session_path, method: :delete, class: "btn btn-logout" %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+  
+  <%= yield %>
+</body>
 </html>

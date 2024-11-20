@@ -1,0 +1,24 @@
+<div class="edit-student">
+  <h1>Edit Student</h1>
+
+  <%= form_with model: @student, local: true do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :subject %>
+      <%= f.text_field :subject, required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :marks %>
+      <%= f.number_field :marks, required: true %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "Update", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

@@ -1,4 +1,42 @@
-<h1>Welcome to the Teacher Portal</h1>
-<h2>These are the Students Lists</h2>
+<div class="student-listing" data-controller="students">
+  <h1>Student Listing</h1>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Subject</th>
+        <th>Marks</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+        <tr id="student-<%= student.id %>">
+          <td>
+            <span class="student-name" data-student-id="<%= student.id %>"><%= student.name %></span>
+            <input type="text" class="edit-name" data-student-id="<%= student.id %>" value="<%= student.name %>" style="display: none;">
+          </td>
+          <td>
+            <span class="student-subject" data-student-id="<%= student.id %>"><%= student.subject %></span>
+            <input type="text" class="edit-subject" data-student-id="<%= student.id %>" value="<%= student.subject %>" style="display: none;">
+          </td>
+          <td>
+            <span class="student-marks" data-student-id="<%= student.id %>"><%= student.marks %></span>
+            <input type="number" class="edit-marks" data-student-id="<%= student.id %>" value="<%= student.marks %>" style="display: none;">
+          </td>
+          <td>
+            <button class="btn-edit" data-student-id="<%= student.id %>">Edit</button>
+            <button class="btn-save" data-student-id="<%= student.id %>" style="display: none;">Save</button>
+            <button class="btn-cancel" data-student-id="<%= student.id %>" style="display: none;">Cancel</button>
+            <%= link_to "Delete", student_path(student), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-delete" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-<%= button_to "Sign Out", destroy_teacher_session_path, method: :delete %>
+<div class="add-student">
+  <%= link_to "Add New Student", new_student_path, class: "btn btn-primary" %>
+</div>

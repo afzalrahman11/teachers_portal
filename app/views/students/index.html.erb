@@ -26,6 +26,7 @@
             <input type="number" class="edit-marks" data-student-id="<%= student.id %>" value="<%= student.marks %>" style="display: none;">
           </td>
           <td>
+            <%= link_to "View", student_path(student), class: "btn btn-view" %>
             <button class="btn-edit" data-student-id="<%= student.id %>">Edit</button>
             <button class="btn-save" data-student-id="<%= student.id %>" style="display: none;">Save</button>
             <button class="btn-cancel" data-student-id="<%= student.id %>" style="display: none;">Cancel</button>

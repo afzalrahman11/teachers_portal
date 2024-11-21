@@ -1,0 +1,31 @@
+<div class="student-details" data-controller="student-show">
+  <h1>Student Details</h1>
+
+  <table>
+    <tr>
+      <th>Name:</th>
+      <td><%= @student.name %></td>
+    </tr>
+    <tr>
+      <th>Subject:</th>
+      <td><%= @student.subject %></td>
+    </tr>
+    <tr>
+      <th>Marks:</th>
+      <td><%= @student.marks %></td>
+    </tr>
+  </table>
+
+  <div class="actions">
+    <%= link_to "Edit", edit_student_path(@student), class: "btn btn-edit" %>
+    <%= link_to "Back to List", students_path, class: "btn btn-primary" %>
+    <%= link_to "Delete", student_path(@student), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-delete" %>
+  </div>
+</div>  
+  
+<div class="add-student">
+  <%= link_to "Perform Simple Job", perform_simple_job_student_path(@student), class: "btn btn-secondary", data: {turbo_method: :post} %>
+</div>
+<div class="add-student">
+  <%= link_to "Perform Sidekiq Job", perform_simple_job_student_path(@student), class: "btn custom-btn-job", data: {turbo_method: :post} %>
+</div>

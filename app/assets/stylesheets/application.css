@@ -81,6 +81,10 @@
     text-align: center;
   }
   
+  .btn-view {
+    background-color: #148b04;
+  }
+
   .btn-edit {
     background-color: #007bff;
   }

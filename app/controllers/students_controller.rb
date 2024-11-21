@@ -5,6 +5,10 @@ class StudentsController < ApplicationController
     @students = Student.all
   end
 
+  def show
+    @student = Student.find(params[:id])
+  end
+
   def new
     @student = Student.new
   end
@@ -42,6 +46,13 @@ class StudentsController < ApplicationController
     @student.destroy
     flash[:notice] = "Student successfully deleted."
     redirect_to students_path
+  end
+
+  def perform_simple_job
+    @student = Student.find(params[:id])
+
+    # SimpleJob.perform_later(@student, 11, "Afzal Rahman") --> basic job without time mentioned
+    SimpleJob.set(wait: 30.seconds).perform_later(@student, 11, "Afzal Rahman")
   end
 
   private

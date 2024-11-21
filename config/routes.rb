@@ -10,5 +10,9 @@ Rails.application.routes.draw do
     get "teachers/sign_out" => "devise/sessions#destroy"
   end
 
-  resources :students, only: [ :index, :create, :new, :edit, :update, :destroy ]
+  resources :students do
+    member do
+      post "perform_simple_job", to: "students#perform_simple_job"
+    end
+  end
 end

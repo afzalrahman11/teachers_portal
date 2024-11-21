@@ -27,5 +27,5 @@
   <%= link_to "Perform Simple Job", perform_simple_job_student_path(@student), class: "btn btn-secondary", data: {turbo_method: :post} %>
 </div>
 <div class="add-student">
-  <%= link_to "Perform Sidekiq Job", perform_simple_job_student_path(@student), class: "btn custom-btn-job", data: {turbo_method: :post} %>
+  <%= link_to "Perform Sidekiq Job", perform_sidekiq_job_student_path(@student), class: "btn custom-btn-job", data: {turbo_method: :post} %>
 </div>
